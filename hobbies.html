@@ -1,0 +1,91 @@
+<div class="hobby">
+  <div class="hobby-text">
+    <h2>Rey's Hobbies and Interests</h2>
+    <h3>HTML & CSS (JS)</h3>
+    <p>Rey creates stylish cyberpunk-inspired webpages and UI layouts.</p>
+  </div>
+  <div class="hobby-image">
+    <img src="CD.jpg" alt="HTML CSS Work (placeholder)">
+  </div>
+</div>
+
+<div class="hobby">
+  <div class="hobby-text">
+    <h3>Creative Writing</h3>
+    <p>Light novels, emotional pieces, and multi-chapter narrative work.</p>
+  </div>
+  <div class="hobby-image">
+    <img src="JT.jpg"Writing Image (placeholder)">
+  </div>
+</div>
+
+<div class="hobby">
+  <div class="hobby-text">
+    <h3>Script Writing</h3>
+    <p>Storyboarding and screenplay formats for game and media projects.</p>
+  </div>
+  <div class="hobby-image">
+    <img src="SC.jpg" alt="Script Image (placeholder)">
+  </div>
+</div>
+
+<div class="hobby">
+  <div class="hobby-text">
+    <h3>Digital Arts</h3>
+    <p>Character art, scene rendering, and digital visual composition.</p>
+  </div>
+  <div class="hobby-image">
+    <img src="ART.jpg" alt="Digital Art (placeholder)">
+  </div>
+</div>
+
+<style>
+  .hobby {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px 0;
+  padding: 25px;
+  border: 2px solid var(--pink);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  box-shadow: 0 0 20px var(--burgundy);
+  gap: 40px;
+}
+
+.hobby-text {
+  flex: 1;
+  color: var(--aqua);
+}
+
+.hobby-text h3 {
+  color: var(--yellow);
+  text-shadow: 0 0 10px var(--yellow);
+  margin-bottom: 10px;
+}
+
+.hobby-image {
+  width: 260px;
+  height: 180px;
+  border: 2px solid var(--aqua);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px var(--aqua);
+}
+
+.hobby-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+</style>
+
+<audio id="bg-audio" hidden autoplay src="Cyberpunk 2077_ Phantom Liberty OST_ Choke Hold (Instrumental-Combat Variation).mp3"></audio>
+
+<script>
+  const audio = document.getElementById("bg-audio");
+  audio.volume = 0.15; 
+</script>
+
+<link rel="stylesheet" href="style.css" />

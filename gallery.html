@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Photo Gallery</h2>
+  <div class="gallery">
+    <img src="fam.jpg" alt="Me 1" />
+    <img src="hug.jpg" alt="Me 2" />
+    <img src="eat2.jpg" alt="Me 3" />
+    <img src="eat.jpg" alt="Me 3" />
+    <img src="gym.jpg" alt="Me 3" />
+    <img src="walk.jpg" alt="Me 3" />
+    <img src="white.jpg" alt="Me 3" />
+    <img src="sti.jpg" alt="Me 3" />
+    <img src="suit.jpg" alt="Me 3" />
+  </div>
+</div>
+<style>
+  .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px; /* space between images */
+  padding: 20px; /* margin inside the gallery */
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* keeps images uniform */
+  border-radius: 6px; /* optional */
+}
+</style>
+
+
+<audio id="bg-audio" hidden autoplay src="Cyberpunk 2077_ Phantom Liberty OST_ Choke Hold (Instrumental-Combat Variation).mp3"></audio>
+
+<script>
+  const audio = document.getElementById("bg-audio");
+  audio.volume = 0.15; 
+</script>
+
+<link rel="stylesheet" href="style.css" />

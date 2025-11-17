@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blackwall Access - Rey</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #000000;
+  --pink: #C30045;
+  --burgundy: #760021;
+  --yellow: #F3E500;
+  --aqua: #56F7E3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;
+}
+
+body {
+  background: var(--black);
+  color: var(--aqua);
+  overflow-x: hidden;
+  position: relative;
+}
+
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(86, 247, 227, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 229, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(rgba(195, 0, 69, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(118, 0, 33, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+  pointer-events: none;
+  z-index: 999;
+}
+
+
+body::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.03) 0px,
+      rgba(255,255,255,0.03) 1px,
+      transparent 2px,
+      transparent 3px
+  );
+  z-index: 1000;
+}
+
+
+.neon {
+  text-shadow: 0 0 10px var(--aqua), 0 0 20px var(--aqua);
+}
+
+
+.glitch {
+  animation: glitch 0.4s linear 1;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 0 red, -2px 0 blue; }
+  25% { text-shadow: -2px 0 red, 2px 0 blue; }
+  50% { text-shadow: 2px 0 red, -2px 0 blue; }
+  75% { text-shadow: -2px 0 red, 2px 0 blue; }
+  100% { text-shadow: none; }
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 50px;
+  border-bottom: 2px solid var(--pink);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1001;
+}
+
+header .logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--yellow);
+  text-shadow: 0 0 8px var(--yellow);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+header nav ul li a {
+  color: var(--aqua);
+  text-decoration: none;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+header nav ul li a:hover {
+  color: var(--yellow);
+  text-shadow: 0 0 6px var(--yellow);
+}
+
+
+.hero {
+  padding: 140px 50px;
+  text-align: center;
+  background: linear-gradient(
+      rgba(0,0,0,0.8),
+      rgba(0,0,0,0.8)
+  ),
+  url('https://images.unsplash.com/photo-1520975928316-3a0f3f9c5afd?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1000;
+}
+
+.hero h1 {
+  font-size: 60px;
+  color: var(--aqua);
+  text-shadow: 0 0 20px var(--aqua), 0 0 40px var(--aqua);
+}
+
+.hero p {
+  font-size: 20px;
+  margin-top: 20px;
+  color: var(--yellow);
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+
+.hero button {
+  position: relative;
+  margin-top: 40px;
+  padding: 15px 50px;
+  font-size: 20px;
+  border: 2px solid var(--pink);
+  background: transparent;
+  color: var(--pink);
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 4px;
+  text-shadow: 0 0 10px var(--pink);
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.hero button span {
+  transition: opacity 0.3s;
+}
+
+.hero button.hover-enabled::after {
+  content: attr(data-hover);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--pink);
+  text-shadow: 0 0 10px var(--pink);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.hero button.hover-enabled:hover::after {
+  opacity: 1;
+}
+
+.hero button.hover-enabled:hover span {
+  opacity: 0;
+}
+
+
+.section {
+  padding: 80px 50px;
+}
+
+.section h2 {
+  text-align: center;
+  font-size: 40px;
+  color: var(--yellow);
+  text-shadow: 0 0 12px var(--yellow);
+  margin-bottom: 60px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--burgundy);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px var(--burgundy);
+  transition: 0.3s;
+}
+
+.card-btn {
+  margin-top: 15px;
+  padding: 10px 30px;
+  font-size: 14px;
+  border: 2px solid var(--pink);
+  background: transparent;
+  color: var(--pink);
+  cursor: not-allowed;
+  border-radius: 4px;
+  text-shadow: 0 0 10px var(--pink);
+  transition: 0.3s;
+  width: 100%;
+}
+
+.card-btn.enabled {
+  cursor: pointer;
+  border-color: var(--yellow);
+  color: var(--yellow);
+  text-shadow: 0 0 10px var(--yellow);
+}
+
+.card-btn.enabled:hover {
+  box-shadow: 0 0 15px var(--yellow);
+  transform: translateY(-3px);
+}
+
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 25px var(--pink);
+  border-color: var(--pink);
+}
+
+.card h3 {
+  color: var(--aqua);
+  margin-bottom: 15px;
+  text-shadow: 0 0 8px var(--aqua);
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.8);
+  border-top: 2px solid var(--pink);
+  color: var(--yellow);
+  text-shadow: 0 0 8px var(--yellow);
+  position: relative;
+  z-index: 1001;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">BLACKWALL HIVE</div>
+  <nav>
+    <ul>
+      <li><a href="education.html">Education</a></li>
+      <li><a href="systems.html">Systems</a></li>
+      <li><a href="information.html">Information</a></li>
+      <li><a href="netaddress.html">Net Address</a></li>
+      <li><a href="gratitude.html">Credit</a></li>
+      <li><a id="melancholyBtn" href="animation2.html">Melancholy</a></li>
+
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1 class="neon" id="mainStatus">NETWORK INACTIVE</h1>
+  <p id="subStatus">Page systems online — interfacing access to Rey...</p>
+  <button id="initBtn"><span>Initialize</span></button>
+</section>
+
+<section class="section">
+  <h2>Knowledge Affirmations</h2>
+  <div class="cards">
+
+    <div class="card">
+  <h3>Gallery</h3>
+  <p class="card-text"
+     data-locked="Access denied."
+     data-unlocked="Access Granted - Classified visuals of 'Rey' ahead"></p>
+  <button class="card-btn" disabled data-link="gallery.html"><span>LOCKED</span></button>
+</div>
+
+<div class="card">
+  <h3>Hobbies</h3>
+  <p class="card-text"
+     data-locked="Access denied."
+     data-unlocked="Access Granted - Classified avocations of 'Rey' ahead"></p>
+  <button class="card-btn" disabled data-link="hobbies.html"><span>LOCKED</span></button>
+</div>
+
+<div class="card">
+  <h3>Projects</h3>
+  <p class="card-text"
+     data-locked="Access denied."
+     data-unlocked="Access Granted - Classified projects of 'Rey' ahead"></p>
+  <button class="card-btn" disabled data-link="projects.html"><span>LOCKED</span></button>
+</div>
+
+
+  </div>
+</section>
+
+
+<script>
+const audio = new Audio("Choke Hold.mp3");
+audio.loop = true;
+audio.volume = 0.35;
+
+let initialized = false;
+let toggled = false;
+
+const button = document.getElementById("initBtn");
+const span = button.querySelector("span");
+
+const cardTexts = document.querySelectorAll(".card-text");
+const cardButtons = document.querySelectorAll(".card-btn");
+
+cardButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("enabled")) {
+      window.location.href = btn.dataset.link;
+    }
+  });
+});
+
+document.getElementById("melancholyBtn").addEventListener("click", function(event) {
+  event.preventDefault(); 
+
+  const warn = confirm(
+    "⚠ WARNING: Emotional instability ahead\n" +
+    "This sequence contains depressing ass images and soundbytes.\n\n" +
+    "Proceed anyway?"
+  );
+
+  if (warn) {
+    window.location.href = "animation2.html";
+  }
+});
+
+
+button.addEventListener("click", () => {
+  const mainStatus = document.getElementById("mainStatus");
+  const subStatus = document.getElementById("subStatus");
+  const glitchElements = document.querySelectorAll("h1, h2, h3, p, footer, header .logo, header nav ul li a, button");
+
+  if (!toggled) {
+    mainStatus.textContent = "NETWORK INITIALIZED";
+    subStatus.textContent = "Access confirmed - Rey awaits...";
+    span.textContent = "ACCESS GRANTED";
+
+    button.classList.add("hover-enabled");
+    button.setAttribute("data-hover", "DESYNCHRONIZE");
+
+  
+    cardTexts.forEach(el => {
+      el.textContent = el.dataset.unlocked;
+    });
+
+    cardButtons.forEach(btn => {
+      btn.classList.add("enabled");
+      btn.removeAttribute("disabled");
+      btn.innerHTML = "<span>ENTER</span>";
+    });
+
+    if (!initialized) {
+      audio.play();
+      initialized = true;
+    } else {
+      audio.play();
+    }
+
+  } else {
+    mainStatus.textContent = "NETWORK INACTIVE";
+    subStatus.textContent = "Page systems online — interfacing access to Rey...";
+    span.textContent = "Initialize";
+
+    button.classList.remove("hover-enabled");
+    button.removeAttribute("data-hover");
+
+    
+    cardTexts.forEach(el => {
+      el.textContent = el.dataset.locked;
+    });
+
+    cardButtons.forEach(btn => {
+      btn.classList.remove("enabled");
+      btn.setAttribute("disabled", "");
+      btn.innerHTML = "<span>LOCKED</span>";
+    });
+
+    audio.pause();
+    audio.currentTime = 0;
+  }
+
+  glitchElements.forEach(el => el.classList.add("glitch"));
+  toggled = !toggled;
+
+  setTimeout(() => {
+    glitchElements.forEach(el => el.classList.remove("glitch"));
+  }, 500);
+});
+</script>
+
+
+<footer>
+  © Introduction to Computing | Rey Credo - Tech Transferee 1
+</footer>
+
+</body>
+</html>
